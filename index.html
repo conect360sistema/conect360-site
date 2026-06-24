@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conect360 — Gestão escolar inteligente</title>
+  <meta name="description" content="Conect360 é uma plataforma SaaS de gestão escolar completa, inteligente e conectada para secretaria, gestão, professores, estudantes, responsáveis, portaria e financeiro.">
+  <link rel="icon" href="assets/img/favicon.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="home360">
+
+  <!-- TOPBAR -->
+  <div class="home360-topbar">
+    <div class="inner">
+      <div class="left">
+        <span class="item">☎ <strong>(31) 99981-3140</strong></span>
+        <span class="item">✉ <strong>suporte@conect360.com.br</strong></span>
+      </div>
+
+      <div class="right">
+        <button type="button" id="btnInstallConect360" class="btn-install-conect360">
+           Instalar Conect360
+        </button>
+
+        <a class="btn" href="acesso.html">Entrar</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="home360-header">
+    <div class="inner">
+
+      <nav class="home360-nav left">
+        <a class="active" href="index.html">HOME</a>
+        <a href="#sobre">SOBRE</a>
+        <a href="#comprar">RECURSOS</a>
+      </nav>
+
+  <!-- ✅ SUA LOGO -->
+  <div class="home360-brand">
+    <div class="badge">
+      <img
+        src="assets/img/logo-conect360.png"
+        alt="Conect360"
+        style="height:100px;width:auto;display:block;margin:0 auto;"
+      />
+    </div>
+  </div>
+
+      <nav class="home360-nav right">
+        <a href="#comunicacao">AGENDAR DEMONSTRAÇÃO</a>
+        <a href="#contato">CONTATO</a>
+      </nav>
+
+    </div>
+  </header>
+  
+  <!-- HERO / SLIDER - CARROSSEL -->
+<section class="home360-hero" aria-label="Destaques do Conect360">
+
+  <!-- Slide 1 — Conect360 -->
+  <div class="home360-slide active" style="--bg:url('../img/banner.jpg?v=20260617-1')">
+    <div class="container">
+      <div class="content">
+        <h1>Conect360</h1>
+        <h3>Gestão escolar completa, inteligente e conectada</h3>
+        <p>
+          Integre secretaria, gestão, supervisão, coordenação, professores, estudantes,
+          responsáveis e portaria em uma única plataforma, com visão pedagógica,
+          administrativa e financeira da escola.
+        </p>
+        <div class="home360-actions">
+          <a class="btn-outline" href="#comunicacao">Agendar demonstração</a>
+          <a class="btn" href="acesso.html">Entrar</a>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Slide 2 — Secretaria -->
+  <div class="home360-slide" style="--bg:url('../img/slide-secretaria.jpg')">
+    <div class="container">
+      <div class="content">
+        <h1>Secretaria</h1>
+        <h3>Rotina escolar organizada em poucos cliques</h3>
+        <p>
+          Matrículas e rematrículas, gerador de horário, conselho de classe,
+          comunicação completa e integração com todos os setores da escola.
+          A secretaria ganha agilidade, controle e muito mais organização no dia a dia.
+        </p>
+        <div class="home360-actions">
+          <a class="btn-outline" href="#comprar">Conhecer recursos</a>
+          <a class="btn-outline" href="#comunicacao">Agendar demonstração</a>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Slide 3 — Gestão -->
+  <div class="home360-slide" style="--bg:url('../img/slide-gestao.jpg?v=20260617-gestao-1')">
+    <div class="container">
+      <div class="content">
+        <h1>Gestão</h1>
+        <h3>Visão estratégica pedagógica e financeira</h3>
+        <p>
+          A gestão acompanha a escola com visão pedagógica completa, financeiro
+          integrado, DRE, análise de inadimplência e indicadores estratégicos
+          para tomar decisões com mais segurança.
+        </p>
+        <div class="home360-actions">
+          <a class="btn-outline" href="#comprar">Ver diferenciais</a>
+          <a class="btn-outline" href="#comunicacao">Agendar demonstração</a>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Slide 4 — Supervisão -->
+  <div class="home360-slide" style="--bg:url('../img/slide-supervisao.jpg')">
+    <div class="container">
+      <div class="content">
+        <h1>Supervisão</h1>
+        <h3>Acompanhamento pedagógico completo por segmento</h3>
+        <p>
+          A supervisão acompanha o trabalho docente, o desempenho pedagógico dos
+          estudantes e análises por avaliação, etapa, ano letivo e trajetória longitudinal,
+          além de manter comunicação com professores, estudantes e famílias.
+        </p>
+        <div class="home360-actions">
+          <a class="btn-outline" href="#comprar">Conhecer acompanhamento</a>
+          <a class="btn-outline" href="#comunicacao">Agendar demonstração</a>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Slide 5 — Coordenação -->
+  <div class="home360-slide" style="--bg:url('../img/slide-coordenacao.jpg?v=20260617-coordenacao-1')">
+    <div class="container">
+      <div class="content">
+        <h1>Coordenação</h1>
+        <h3>Gestão pedagógica focada no segmento cadastrado</h3>
+        <p>
+          A coordenação acompanha professores, estudantes, turmas, desempenho,
+          análises pedagógicas e comunicação dentro do seu segmento, com visão clara
+          para agir com rapidez nas necessidades da rotina escolar.
+        </p>
+        <div class="home360-actions">
+          <a class="btn-outline" href="#comprar">Ver recursos</a>
+          <a class="btn-outline" href="#comunicacao">Agendar demonstração</a>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Slide 6 — Professor -->
+  <div class="home360-slide" style="--bg:url('../img/slide-professor.jpg')">
+    <div class="container">
+      <div class="content">
+        <h1>Professor</h1>
+        <h3>Ferramentas que otimizam o trabalho docente</h3>
+        <p>
+          Diários, frequência, planejamento anual e por etapa, Banco de Questões integrado,
+          envio de atividades, correção automatizada por cartão-resposta, apoio de IA e
+          uso do Nexo IA para facilitar a rotina pedagógica.
+        </p>
+        <div class="home360-actions">
+          <a class="btn-outline" href="#comprar">Conhecer ferramentas</a>
+          <a class="btn-outline" href="#comunicacao">Agendar demonstração</a>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Slide 7 — Professor da Educação Infantil -->
+  <div class="home360-slide" style="--bg:url('../img/slide-professor-ei.jpg')">
+    <div class="container">
+      <div class="content">
+        <h1>Educação Infantil</h1>
+        <h3>Registros qualitativos, rotina e desenvolvimento</h3>
+        <p>
+          Para professores da EI, o Conect360 oferece ficha avaliativa online,
+          agenda da turma, agenda da criança, registros de rotina, acompanhamento
+          do desenvolvimento e muito mais.
+        </p>
+        <div class="home360-actions">
+          <a class="btn-outline" href="#comprar">Ver Educação Infantil</a>
+          <a class="btn-outline" href="#comunicacao">Agendar demonstração</a>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Slide 8 — Estudante -->
+  <div class="home360-slide" style="--bg:url('../img/slide-estudante.jpg')">
+    <div class="container">
+      <div class="content">
+        <h1>Estudante</h1>
+        <h3>Desempenho, estudo personalizado e Nexo IA</h3>
+        <p>
+          O estudante acompanha sua vida escolar ao longo dos anos, por ano, etapa
+          e avaliação, com análise pedagógica personalizada, acesso ao diário, frequência,
+          notas, boletim, comunicados, Modo Estudo e aulas orientadas pelo Nexo IA.
+        </p>
+        <div class="home360-actions">
+          <a class="btn-outline" href="#comprar">Conhecer experiência</a>
+          <a class="btn-outline" href="#comunicacao">Agendar demonstração</a>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Slide 9 — Visão Gamificada -->
+  <div class="home360-slide" style="--bg:url('../img/slide-gamificacao.jpg')">
+    <div class="container">
+      <div class="content">
+        <h1>Conect Garden, Park, District e City</h1>
+        <h3>A vida escolar em uma experiência gamificada</h3>
+        <p>
+          O Conect360 transforma a experiência do estudante com visões gamificadas
+          adequadas a cada etapa: Garden para EI, Park para EFAI, District para EFAF
+          e City para Ensino Médio.
+        </p>
+        <div class="home360-actions">
+          <a class="btn-outline" href="#comprar">Conhecer gamificação</a>
+          <a class="btn-outline" href="#comunicacao">Agendar demonstração</a>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Slide 10 — Responsável -->
+  <div class="home360-slide" style="--bg:url('../img/slide-responsavel.jpg')">
+    <div class="container">
+      <div class="content">
+        <h1>Responsável</h1>
+        <h3>Acompanhamento completo da vida escolar</h3>
+        <p>
+          Responsáveis acompanham diário, frequência, horário de aula, desempenho acadêmico
+          com análise longitudinal, notas, boletim, comunicados e financeiro completo com
+          boletos, segunda via e histórico de pagamentos.
+        </p>
+        <div class="home360-actions">
+          <a class="btn-outline" href="#comprar">Ver acompanhamento</a>
+          <a class="btn-outline" href="#comunicacao">Agendar demonstração</a>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Slide 11 — Responsável da Educação Infantil -->
+  <div class="home360-slide" style="--bg:url('../img/slide-responsavel-ei.jpg')">
+    <div class="container">
+      <div class="content">
+        <h1>Responsável EI</h1>
+        <h3>Rotina, desenvolvimento e segurança na palma da mão</h3>
+        <p>
+          Na Educação Infantil, o responsável acompanha ficha avaliativa, análise
+          de desenvolvimento, agenda da turma, agenda da criança e check-in com
+          notificações em tempo real na entrada e saída dos estudantes.
+        </p>
+        <div class="home360-actions">
+          <a class="btn-outline" href="#comprar">Conhecer EI</a>
+          <a class="btn-outline" href="#comunicacao">Agendar demonstração</a>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Slide 12 — Portaria -->
+  <div class="home360-slide" style="--bg:url('../img/slide-portaria.jpg')">
+    <div class="container">
+      <div class="content">
+        <h1>Portaria</h1>
+        <h3>Entrada e saída com QR Code e notificações automáticas</h3>
+        <p>
+          A portaria é simplificada com leitor de QR Code, registro rápido de entrada
+          e saída e notificação automática para a escola e para os responsáveis,
+          aumentando a segurança da rotina escolar.
+        </p>
+        <div class="home360-actions">
+          <a class="btn-outline" href="#comprar">Conhecer segurança</a>
+          <a class="btn-outline" href="#comunicacao">Agendar demonstração</a>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Slide 13 — Nexo IA -->
+  <div class="home360-slide" style="--bg:url('../img/slide-nexo-ia.jpg')">
+    <div class="container">
+      <div class="content">
+        <h1>Nexo IA</h1>
+        <h3>Inteligência artificial para professores e estudantes</h3>
+        <p>
+          O Nexo IA ajuda professores e estudantes em suas tarefas diárias, apoiando
+          estudos, análises pedagógicas, criação de atividades, planejamento, avaliações
+          e aprendizagem com orientação inteligente.
+        </p>
+        <div class="home360-actions">
+          <a class="btn-outline" href="#comprar">Conhecer Nexo IA</a>
+          <a class="btn-outline" href="#comunicacao">Agendar demonstração</a>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Slide 14 — Biblioteca -->
+  <div class="home360-slide" style="--bg:url('../img/biblioteca.jpg')">
+    <div class="container">
+      <div class="content">
+        <h1>Biblioteca</h1>
+        <h3>Acervo, empréstimos e leitura integrados à rotina escolar</h3>
+        <p>
+          O módulo Biblioteca do Conect360 organiza o acervo da escola, exemplares,
+          leitores, empréstimos, devoluções e atrasos em um único ambiente.
+          Bibliotecários, secretaria, gestão, supervisão, coordenação, estudantes
+          e responsáveis acompanham tudo de forma simples, segura e integrada.
+        </p>
+        <div class="home360-actions">
+          <a class="btn-outline" href="#comprar">Conhecer Biblioteca</a>
+          <a class="btn-outline" href="#comunicacao">Agendar demonstração</a>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <button class="home360-ctrl prev" type="button" id="home360Prev" aria-label="Anterior">‹</button>
+  <button class="home360-ctrl next" type="button" id="home360Next" aria-label="Próximo">›</button>
+  <div class="home360-dots" id="home360Dots"></div>
+</section>
+
+  <!-- O que oferecemos -->
+  <section class="home360-services" id="comprar">
+    <div class="wrap">
+      <div class="box">
+        <div class="intro">
+          <h3>Temos tudo que você precisa</h3>
+          <p>
+            Uma plataforma completa para conectar todos os setores da escola:
+            secretaria, gestão, supervisão, coordenação, professores, estudantes,
+            responsáveis, portaria e inteligência artificial pedagógica.
+          </p>
+        </div>
+
+        <div class="grid">
+          <div class="card bg1">
+            <div class="ico">
+              <!-- Secretaria -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 3.5h12a2 2 0 0 1 2 2V20H4V5.5a2 2 0 0 1 2-2Z" />
+                <path d="M8 7h8" />
+                <path d="M8 10h8" />
+                <path d="M8 13h5" />
+                <path d="M8 17h2" />
+                <path d="M14 17h2" />
+              </svg>
+            </div>
+            <h6>Secretaria</h6>
+            <p>Matrículas, rematrículas, gerador de horário, conselho de classe, comunicação completa e integração com todos os setores.</p>
+          </div>
+
+          <div class="card bg2">
+            <div class="ico">
+              <!-- Gestão -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 19V5" />
+                <path d="M4 19h16" />
+                <path d="M7 16v-4" />
+                <path d="M11 16V9" />
+                <path d="M15 16v-6" />
+                <path d="M19 16V7" />
+                <path d="M7 8l4-3 4 2 4-3" />
+              </svg>
+            </div>
+            <h6>Gestão</h6>
+            <p>Visão pedagógica completa, financeiro integrado, DRE, inadimplência e indicadores estratégicos para decisões mais seguras.</p>
+          </div>
+
+          <div class="card bg3">
+            <div class="ico">
+              <!-- Supervisão -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3l8 4v5c0 5.2-3.3 8.7-8 10-4.7-1.3-8-4.8-8-10V7l8-4Z" />
+                <path d="M8 12l2.5 2.5L16 9" />
+                <path d="M12 6.8v2" />
+              </svg>
+            </div>
+            <h6>Supervisão</h6>
+            <p>Acompanhamento pedagógico por segmento, trabalho docente, desempenho dos estudantes e análise longitudinal completa.</p>
+          </div>
+
+          <div class="card bg4">
+            <div class="ico">
+              <!-- Coordenação -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 5h16v10H4z" />
+                <path d="M8 19h8" />
+                <path d="M12 15v4" />
+                <path d="M7 8h5" />
+                <path d="M7 11h3" />
+                <path d="M15 8h2" />
+                <path d="M14 11h3" />
+              </svg>
+            </div>
+            <h6>Coordenação</h6>
+            <p>Gestão pedagógica do segmento cadastrado, com acompanhamento de turmas, professores, estudantes, desempenho e comunicação.</p>
+          </div>
+
+          <div class="card bg1">
+            <div class="ico">
+              <!-- Professor -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 5.5h16v11H4z" />
+                <path d="M8 20h8" />
+                <path d="M12 16.5V20" />
+                <path d="M7 9h6" />
+                <path d="M7 12h4" />
+                <path d="M16 9l2 2" />
+                <path d="M15 12l3-3" />
+              </svg>
+            </div>
+            <h6>Professor</h6>
+            <p>Diários, frequência, planejamentos, Banco de Questões, atividades, correção automatizada e apoio do Nexo IA.</p>
+          </div>
+
+          <div class="card bg2">
+            <div class="ico">
+              <!-- Professor EI -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 21s7-4.5 7-11a7 7 0 0 0-14 0c0 6.5 7 11 7 11Z" />
+                <path d="M9 10h6" />
+                <path d="M9 13h4" />
+                <path d="M8 6.8c1.2-1 2.5-1.5 4-1.5s2.8.5 4 1.5" />
+              </svg>
+            </div>
+            <h6>Professor EI</h6>
+            <p>Ficha avaliativa online, agenda da turma, agenda da criança, registros de rotina e acompanhamento do desenvolvimento.</p>
+          </div>
+
+          <div class="card bg3">
+            <div class="ico">
+              <!-- Estudante -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6l8-3 8 3-8 3-8-3Z" />
+                <path d="M7 8v5c0 2 2.2 3.5 5 3.5s5-1.5 5-3.5V8" />
+                <path d="M20 6v5" />
+                <path d="M20 11l-1 2" />
+              </svg>
+            </div>
+            <h6>Estudante</h6>
+            <p>Desempenho ao longo dos anos, análises por etapa e avaliação, diário, frequência, notas, boletim e comunicados.</p>
+          </div>
+
+          <div class="card bg4">
+            <div class="ico">
+              <!-- Modo Estudo -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 4.5h7a3 3 0 0 1 3 3V20H8a3 3 0 0 0-3 3V4.5Z" />
+                <path d="M19 4.5h-7a3 3 0 0 0-3 3V20h7a3 3 0 0 1 3 3V4.5Z" />
+                <path d="M8 8h4" />
+                <path d="M8 11h3" />
+                <path d="M14 8h2" />
+              </svg>
+            </div>
+            <h6>Modo Estudo</h6>
+            <p>Listas personalizadas, sugestões por desempenho, integração com notas da etapa e apoio socrático do Nexo IA.</p>
+          </div>
+
+          <div class="card bg1">
+            <div class="ico">
+              <!-- Visão Gamificada -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 20V9l4-3 4 3 4-3 4 3v11" />
+                <path d="M8 20v-5h3v5" />
+                <path d="M15 20v-4h2v4" />
+                <path d="M6 11h2" />
+                <path d="M13 11h2" />
+                <path d="M18 11h1" />
+              </svg>
+            </div>
+            <h6>Visão Gamificada</h6>
+            <p>Conect Garden, Park, District e City: experiências gamificadas para EI, EFAI, EFAF e Ensino Médio.</p>
+          </div>
+
+          <div class="card bg2">
+            <div class="ico">
+              <!-- Responsável -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8.5 10.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                <path d="M15.5 10.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                <path d="M4.5 20a4 4 0 0 1 8 0" />
+                <path d="M11.5 20a4 4 0 0 1 8 0" />
+                <path d="M12 13.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+              </svg>
+            </div>
+            <h6>Responsável</h6>
+            <p>Diário, frequência, horário, desempenho longitudinal, notas, boletim, comunicados, financeiro, boletos e pagamentos.</p>
+          </div>
+
+          <div class="card bg3">
+            <div class="ico">
+              <!-- Responsável EI -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 21s7-4.5 7-11a7 7 0 0 0-14 0c0 6.5 7 11 7 11Z" />
+                <path d="M9 11h6" />
+                <path d="M9 14h4" />
+                <path d="M16 7l2-2" />
+                <path d="M8 7L6 5" />
+              </svg>
+            </div>
+            <h6>Responsável EI</h6>
+            <p>Ficha avaliativa, análise de desenvolvimento, agenda da turma, agenda da criança e check-in em tempo real.</p>
+          </div>
+
+          <div class="card bg4">
+            <div class="ico">
+              <!-- Portaria -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 4h14v16H5z" />
+                <path d="M8 7h2" />
+                <path d="M14 7h2" />
+                <path d="M8 12h2" />
+                <path d="M14 12h2" />
+                <path d="M9 17h6" />
+                <path d="M3 20h18" />
+              </svg>
+            </div>
+            <h6>Portaria</h6>
+            <p>Entrada e saída com QR Code, registro rápido e notificação automática para escola e responsáveis.</p>
+          </div>
+
+          <div class="card bg1">
+            <div class="ico">
+              <!-- Nexo IA -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3a4 4 0 0 1 4 4v1h1.5A2.5 2.5 0 0 1 20 10.5v5A2.5 2.5 0 0 1 17.5 18H16v1a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-1H6.5A2.5 2.5 0 0 1 4 15.5v-5A2.5 2.5 0 0 1 6.5 8H8V7a4 4 0 0 1 4-4Z" />
+                <path d="M9 13h.01" />
+                <path d="M15 13h.01" />
+                <path d="M10 16h4" />
+                <path d="M12 3V1.5" />
+              </svg>
+            </div>
+            <h6>Nexo IA</h6>
+            <p>Inteligência artificial para apoiar professores e estudantes em estudos, análises, atividades, planejamento e avaliações.</p>
+          </div>
+
+          <div class="card bg2">
+            <div class="ico">
+              <!-- Biblioteca -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4.5 5.5h6.5a3 3 0 0 1 3 3V20a3 3 0 0 0-3-3H4.5z" />
+                <path d="M19.5 5.5H13a3 3 0 0 0-3 3V20a3 3 0 0 1 3-3h6.5z" />
+                <path d="M7 9h4" />
+                <path d="M7 12h3" />
+                <path d="M14 9h3" />
+                <path d="M14 12h2" />
+                <path d="M12 8v12" />
+              </svg>
+            </div>
+            <h6>Biblioteca</h6>
+            <p>Acervo, exemplares, leitores, empréstimos, devoluções, atrasos e relatórios integrados à rotina escolar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS -->
+  <section class="home360-section" id="cursos">
+    <div class="wrap">
+      <h2>O QUE TORNA O CONECT360 DIFERENTE</h2>
+      <p class="sub">
+        Mais do que reunir funcionalidades, o Conect360 conecta dados, pessoas e decisões
+        para melhorar a rotina da escola.
+      </p>
+
+      <div class="home360-courses">
+        <div class="home360-course">
+          <div class="top">
+            <div class="thumb">
+              <img src="assets/img/diferencial-visao-360.png?v=20260617-1" alt="Visão 360° da escola">
+            </div>
+            <h5>Visão 360° da escola</h5>
+            <p>
+              Todos os setores conectados em uma única plataforma, da portaria à gestão,
+              com informações centralizadas e acessíveis para cada perfil.
+            </p>
+          </div>
+        </div>
+
+        <div class="home360-course">
+          <div class="top">
+            <div class="thumb">
+              <img src="assets/img/diferencial-historico-analise.png?v=20260617-1" alt="Histórico escolar com análise pedagógica">
+            </div>
+            <h5>Histórico com análise pedagógica</h5>
+            <p>
+              Acompanhe o estudante ao longo dos anos, por avaliação, etapa, ano letivo
+              e trajetória completa, com leitura pedagógica mais clara.
+            </p>
+          </div>
+        </div>
+
+        <div class="home360-course">
+          <div class="top">
+            <div class="thumb">
+              <img src="assets/img/diferencial-nexo-ia.png?v=20260617-1" alt="Inteligência artificial pedagógica">
+            </div>
+            <h5>Inteligência artificial pedagógica</h5>
+            <p>
+              O Nexo IA apoia professores e estudantes em estudos, planejamento,
+              avaliações, análises pedagógicas e atividades do dia a dia.
+            </p>
+          </div>
+        </div>
+
+        <div class="home360-course">
+          <div class="top">
+            <div class="thumb">
+              <img src="assets/img/diferencial-familias-estudantes.png?v=20260617-1" alt="Experiência moderna para estudantes e famílias">
+            </div>
+            <h5>Experiência moderna</h5>
+            <p>
+              Modo Estudo, visão gamificada, comunicados, financeiro, desempenho
+              e acompanhamento em tempo real para estudantes e famílias.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="home360-section home360-about" id="sobre">
+    <div class="wrap">
+      <div class="cols">
+        <div>
+          <span class="home360-kicker">CONHEÇA O CONECT360</span>
+          <h2>Tecnologia criada por quem vive a escola</h2>
+
+          <p class="text">
+            O Conect360 nasceu da experiência real de quem acompanha escolas,
+            professores, gestores, estudantes e famílias há mais de 20 anos.
+          </p>
+
+          <p class="text">
+            Ao longo dessa trajetória, ficou evidente um problema comum: a escola
+            registra muitos dados, mas nem sempre consegue transformar essas informações
+            em decisões claras, ações pedagógicas consistentes e acompanhamento real
+            da aprendizagem.
+          </p>
+
+          <p class="text">
+            Por isso, o Conect360 foi criado para integrar a rotina pedagógica,
+            administrativa, financeira e comunicacional da escola em uma única
+            plataforma, ajudando cada perfil a enxergar o que precisa, agir com mais
+            segurança e acompanhar a evolução dos estudantes ao longo dos anos.
+          </p>
+
+          <div class="highlight">
+            <h4>Nossa proposta é simples:</h4>
+            <ul>
+              <li>Reduzir burocracia e retrabalho na rotina escolar</li>
+              <li>Dar mais clareza para decisões pedagógicas e financeiras</li>
+              <li>Apoiar professores com ferramentas práticas e inteligência artificial</li>
+              <li>Aproximar escola, estudantes e famílias em um só ambiente</li>
+              <li>Transformar dados escolares em acompanhamento real da aprendizagem</li>
+            </ul>
+          </div>
+
+          <div class="highlight">
+            <h4>Criado por quem conhece a escola por dentro</h4>
+            <p class="text" style="margin:0;color:rgba(255,255,255,.72);">
+              Mais do que um sistema, o Conect360 é uma plataforma pensada para a
+              realidade das escolas brasileiras: prática, acessível, completa e feita
+              para apoiar a gestão sem aumentar a burocracia.
+            </p>
+          </div>
+        </div>
+
+        <div class="tiles">
+          <div class="tile" style="--bg:url('../img/about1.png')"></div>
+          <div class="tile" style="--bg:url('../img/about2.png')"></div>
+          <div class="tile" style="--bg:url('../img/about3.png')"></div>
+          <div class="tile" style="--bg:url('../img/about4.png')"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <!-- DIFERENCIAIS DA ROTINA ESCOLAR -->
+  <section class="home360-section home360-events" id="eventos">
+    <div class="wrap">
+      <div class="head home360-events-head-full">
+        <div>
+          <span class="home360-kicker">DIFERENCIAIS</span>
+          <h2 style="text-align:center;margin:0;font-size:34px;font-weight:1000;color:rgba(255,255,255,.96);">
+            DIFERENCIAIS QUE SE ADAPTAM À ROTINA DA ESCOLA
+          </h2>
+          <p>
+            O Conect360 não entrega apenas telas prontas. A plataforma se adapta ao currículo,
+            à rotina pedagógica, à segurança, ao acompanhamento dos estudantes e à comunicação
+            com as famílias.
+          </p>
+        </div>
+      </div>
+
+      <div class="list">
+        <div class="home360-event">
+          <div class="date"><div class="n">01</div><div class="m"></div></div>
+          <div class="body">
+            <h6>Sistema de ensino e currículo</h6>
+            <p>
+              Personalização por livro didático, sistema de ensino, conteúdos, tópicos,
+              subtópicos, habilidades e competências trabalhadas pela escola.
+            </p>
+          </div>
+        </div>
+
+        <div class="home360-event">
+          <div class="date"><div class="n">02</div><div class="m"></div></div>
+          <div class="body">
+            <h6>Planejamento e diário personalizados</h6>
+            <p>
+              O professor trabalha com a estrutura real da escola, registrando planejamentos,
+              aulas, conteúdos e evidências com menos retrabalho.
+            </p>
+          </div>
+        </div>
+
+        <div class="home360-event">
+          <div class="date"><div class="n">03</div><div class="m"></div></div>
+          <div class="body">
+            <h6>Análise pedagógica completa</h6>
+            <p>
+              Acompanhamento do desempenho por avaliação, etapa, ano letivo e trajetória
+              longitudinal do estudante, apoiando decisões pedagógicas mais precisas.
+            </p>
+          </div>
+        </div>
+
+        <div class="home360-event">
+          <div class="date"><div class="n">04</div><div class="m"></div></div>
+          <div class="body">
+            <h6>Check-in com notificação aos responsáveis</h6>
+            <p>
+              Entrada e saída dos estudantes com QR Code, registro pela portaria e
+              notificação em tempo real para responsáveis.
+            </p>
+          </div>
+        </div>
+
+        <div class="home360-event">
+          <div class="date"><div class="n">05</div><div class="m"></div></div>
+          <div class="body">
+            <h6>Modo Estudo integrado ao desempenho</h6>
+            <p>
+              Listas personalizadas, sugestões de estudo e apoio à aprendizagem com base
+              no desempenho real do estudante nas avaliações e atividades.
+            </p>
+          </div>
+        </div>
+
+        <div class="home360-event">
+          <div class="date"><div class="n">06</div><div class="m"></div></div>
+          <div class="body">
+            <h6>Nexo IA para professores e estudantes</h6>
+            <p>
+              Inteligência artificial pedagógica para apoiar estudos, planejamento,
+              criação de atividades, avaliações, análises e acompanhamento da aprendizagem.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED -->
+  <!-- FEATURED -->
+  <section class="home360-section home360-comunicacao" id="comunicacao">
+    <div class="wrap">
+      <h2 class="home360-title">Agende uma demonstração do Conect360</h2>
+      <p class="home360-subtitle">
+        Veja na prática como o Conect360 pode simplificar a gestão da sua escola,
+        conectar todos os setores e apoiar decisões pedagógicas e financeiras com mais clareza.
+      </p>
+
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Preencha seus dados</h3>
+
+          <form class="demo-form" method="post" action="#">
+            
+            <label>
+              <span>Nome</span>
+              <input type="text" name="nome" placeholder="Seu nome" required>
+            </label>
+
+            <label>
+              <span>Telefone</span>
+              <input type="tel" name="telefone" placeholder="(00) 00000-0000" required>
+            </label>
+
+            <label>
+              <span>Nome da escola</span>
+              <input type="text" name="escola" placeholder="Nome da sua escola" required>
+            </label>
+
+            <div class="demo-actions">
+              <button type="button" class="btn360 btn360-primary" onclick="enviarDemoWhats()">
+                Quero agendar uma demonstração
+              </button>
+
+              <a class="btn360 btn360-whats"
+                href="https://wa.me/5531999813140?text=Olá!%20Quero%20agendar%20uma%20demonstração%20do%20Conect360."
+                target="_blank" rel="noopener">
+                Falar pelo WhatsApp
+              </a>
+            </div>
+          </form>
+        </div>
+
+        <div class="demo-card demo-info">
+          <div class="demo-media">
+            <img src="assets/img/demo-conect360.png?v=20260617-1" alt="Demonstração Conect360" loading="lazy">
+          </div>
+
+          <h3>O que você verá na demonstração?</h3>
+
+          <ul>
+            <li>Gestão pedagógica, administrativa e financeira integrada</li>
+            <li>Recursos para secretaria, gestão, professores, estudantes e responsáveis</li>
+            <li>Nexo IA, Modo Estudo e análise pedagógica longitudinal</li>
+            <li>Comunicação, portaria com QR Code e acompanhamento em tempo real</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <!-- CTA FINAL -->
+  <section class="home360-cta-final" id="depoimentos">
+    <div class="wrap">
+      <div class="cta-box">
+        <span class="home360-kicker">CONECT360</span>
+
+        <h2>Pronto para conectar sua escola?</h2>
+
+        <p class="cta-text">
+          Organize a rotina escolar em uma única plataforma: secretaria, gestão,
+          supervisão, coordenação, professores, estudantes, responsáveis, portaria
+          e financeiro trabalhando de forma integrada.
+        </p>
+
+        <div class="cta-final-grid">
+          <div class="cta-final-item">
+            <strong>Gestão mais clara</strong>
+            <span>Dados organizados para decisões pedagógicas, administrativas e financeiras.</span>
+          </div>
+
+          <div class="cta-final-item">
+            <strong>Rotina mais leve</strong>
+            <span>Menos retrabalho para secretaria, coordenação, supervisão e professores.</span>
+          </div>
+
+          <div class="cta-final-item">
+            <strong>Famílias mais próximas</strong>
+            <span>Comunicação, acompanhamento escolar e segurança em tempo real.</span>
+          </div>
+        </div>
+
+        <div class="home360-actions cta-final-actions">
+          <a class="btn-outline" href="#comunicacao">Agendar demonstração</a>
+          <a class="btn-outline cta-whats"
+             href="https://wa.me/5531999813140?text=Olá!%20Quero%20conhecer%20o%20Conect360."
+             target="_blank" rel="noopener">
+            Falar pelo WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+    <!-- FOOTER -->
+  <footer class="home360-footer" id="contato">
+    <div class="wrap">
+      <div class="grid">
+        <div>
+          <div class="brand">Conect360</div>
+          <p>
+            Gestão escolar completa, inteligente e conectada. Uma plataforma para integrar
+            secretaria, gestão, professores, estudantes, responsáveis, portaria e financeiro.
+          </p>
+        </div>
+
+        <div>
+          <h4>Entre em contato</h4>
+          <ul>
+            <li>📍 Formiga/MG</li>
+            <li>☎ (31) 99981-3140</li>
+            <li>✉ suporte@conect360.com.br</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Links rápidos</h4>
+          <ul>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#eventos">Diferenciais</a></li>
+            <li><a href="#comunicacao">Agendar demonstração</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Acesso</h4>
+
+          <div class="footer-actions">
+            <a class="btn" href="acesso.html">Entrar</a>
+
+            <a class="btn footer-whats"
+               href="https://wa.me/5531999813140?text=Olá!%20Quero%20conhecer%20o%20Conect360."
+               target="_blank" rel="noopener">
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom">
+        <span>© 2026 Conect360. Todos os direitos reservados.</span>
+        <span>Gestão escolar conectada do início ao fim.</span>
+        <a href="#" id="home360Top">Voltar ao topo ↑</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script src="assets/js/script.js"></script>
+</body>
+</html>
