@@ -1125,6 +1125,12 @@
     transform: translateY(-1px);
   }
 
+  @media (display-mode: standalone) {
+    #btnInstallConect360 {
+      display: none !important;
+    }
+  }
+
   /* RESPONSIVO */
   @media (max-width: 980px){
     .home360-header .inner{ grid-template-columns: 1fr; gap: 12px; }
