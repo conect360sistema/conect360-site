@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function(){
       if(isIOS && isSafari){
         mostrarInstrucaoInstalacao("No iPhone, toque no botão Compartilhar do Safari e depois em 'Adicionar à Tela de Início'.");
       }else{
-        mostrarInstrucaoInstalacao("No computador ou Android, abra o menu do navegador e escolha 'Instalar app' ou 'Adicionar à tela inicial'.");
+        mostrarInstrucaoInstalacao("O Conect360 já está instalado neste dispositivo.");
       }
     });
   }
