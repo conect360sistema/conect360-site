@@ -1,0 +1,19 @@
+{
+  "name": "Conect360",
+  "short_name": "Conect360",
+  "description": "Toda a escola conectada em um só lugar.",
+  "start_url": "/acesso.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#facc15",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/img/conect360-logo.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
