@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function(){
   if(btnInstall){
     btnInstall.addEventListener("click", async function(){
       if (conect360EstaInstaladoComoApp()) {
-        esconderBotaoInstalarConect360();
+        mostrarInstrucaoInstalacao("O Conect360 já está instalado neste dispositivo.");
         return;
       }
 
