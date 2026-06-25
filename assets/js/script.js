@@ -58,8 +58,31 @@ function mostrarInstrucaoInstalacao(texto){
 
 let conect360InstallPrompt = null;
 
+function conect360EstaInstaladoComoApp() {
+  return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+}
+
+function esconderBotaoInstalarConect360() {
+  const btn = document.getElementById("btnInstallConect360");
+  const box = document.getElementById("installConect360Box");
+
+  if (btn) {
+    btn.style.display = "none";
+  }
+
+  if (box) {
+    box.remove();
+  }
+}
+
 window.addEventListener("beforeinstallprompt", function(event){
   event.preventDefault();
+
+  if (conect360EstaInstaladoComoApp()) {
+    esconderBotaoInstalarConect360();
+    return;
+  }
+
   conect360InstallPrompt = event;
 
   const btn = document.getElementById("btnInstallConect360");
@@ -71,8 +94,17 @@ window.addEventListener("beforeinstallprompt", function(event){
 document.addEventListener("DOMContentLoaded", function(){
   const btnInstall = document.getElementById("btnInstallConect360");
 
+  if (conect360EstaInstaladoComoApp()) {
+    esconderBotaoInstalarConect360();
+  }
+
   if(btnInstall){
     btnInstall.addEventListener("click", async function(){
+      if (conect360EstaInstaladoComoApp()) {
+        esconderBotaoInstalarConect360();
+        return;
+      }
+
       if(conect360InstallPrompt){
         conect360InstallPrompt.prompt();
         await conect360InstallPrompt.userChoice;
