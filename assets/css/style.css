@@ -1105,7 +1105,7 @@
 
   /* ✅ BOTÃO INSTALAR CONECT360 */
   .btn-install-conect360{
-    display:inline-flex;
+    display:none;
     align-items:center;
     justify-content:center;
     gap:8px;
