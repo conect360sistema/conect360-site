@@ -1,4 +1,4 @@
-const CACHE_NAME = "conect360-site-v3";
+const CACHE_NAME = "conect360-site-v4";
 
 const FILES_TO_CACHE = [
   "/",
