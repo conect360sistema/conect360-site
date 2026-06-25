@@ -1,4 +1,4 @@
-const CACHE_NAME = "conect360-site-v5";
+const CACHE_NAME = "conect360-site-v6";
 
 const FILES_TO_CACHE = [
   "/",
@@ -30,10 +30,10 @@ self.addEventListener("activate", function (event) {
           }
         })
       );
+    }).then(function () {
+      return self.clients.claim();
     })
   );
-
-  self.clients.claim();
 });
 
 self.addEventListener("fetch", function (event) {
@@ -41,9 +41,32 @@ self.addEventListener("fetch", function (event) {
     return;
   }
 
+  const request = event.request;
+
+  if (request.mode === "navigate") {
+    event.respondWith(
+      fetch(request).catch(function () {
+        return caches.match("/acesso.html").then(function (cachedAcesso) {
+          return cachedAcesso || caches.match("/index.html");
+        });
+      })
+    );
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request).then(function (cachedResponse) {
-      return cachedResponse || fetch(event.request);
-    })
+    fetch(request)
+      .then(function (networkResponse) {
+        const responseClone = networkResponse.clone();
+
+        caches.open(CACHE_NAME).then(function (cache) {
+          cache.put(request, responseClone);
+        });
+
+        return networkResponse;
+      })
+      .catch(function () {
+        return caches.match(request);
+      })
   );
 });
