@@ -1,25 +1,1844 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Conect360 — Gestão escolar inteligente</title>
-  <meta name="description" content="Conect360 é uma plataforma SaaS de gestão escolar completa, inteligente e conectada para secretaria, gestão, professores, estudantes, responsáveis, portaria e financeiro.">
-  <link rel="icon" href="assets/img/favicon.png">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#facc15">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+  <title>Conect360 — Home</title>
+  <link rel="icon" href="./assets/img/conect360-logo.png">
+  <style>
+    :root{
+      --bg:#0b1220; --card:#131a2e; --muted:#9aa8c7; --white:#f7f8ff;
+
+      /* ✅ Conect360 Blue */
+      --cBlue1:#38bdf8;   /* azul claro */
+      --cBlue2:#2563eb;   /* azul médio */
+      --cBlue3:#1d4ed8;   /* azul mais forte */
+    }
+    html,body{height:100%}
+    *{box-sizing:border-box}
+    body{
+      margin:0; overflow-x:hidden;
+      background:radial-gradient(80% 60% at 70% 20%, #10203a 0%, var(--bg) 45%, #0a0f1e 100%);
+      color:var(--white);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+      position:relative; /* ✅ necessário para o fundo global */
+    }
+
+    /* =====================================================
+       ✅ FUNDO GLOBAL (imagem + overlay)
+       - troque o arquivo em: static/img/bg-escola.jpg
+       ===================================================== */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:url("./assets/img/bg-escola.jpg");
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      transform:scale(1.02);
+      z-index:-2;
+    }
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        radial-gradient(80% 60% at 70% 20%, rgba(16,32,58,.75) 0%, rgba(11,18,32,.92) 45%, rgba(10,15,30,.96) 100%),
+        linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.55));
+      z-index:-1;
+    }
+
+    /* LAYOUT BASE */
+    .wrap{min-height:100%; display:flex; flex-direction:column}
+    .container{max-width:1100px; margin:0 auto; padding:0 16px}
+    main{flex:1}
+    .page{padding:40px 0}
+
+    /* NAVBAR */
+    header{
+      position:sticky; top:0; z-index:10;
+      background:rgba(11,18,32,.6); backdrop-filter:blur(6px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{
+      width:100%;
+      padding:0 24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:64px;
+    }
+
+    .nav-left,
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      text-decoration:none; color:var(--white); white-space:nowrap;
+    }
+    .brand img{
+      width:68px;
+      height:68px;
+      border-radius:8px;
+    }
+
+    .brand span{
+      font-weight:800;
+      font-size:25px;
+      letter-spacing:.4px;
+    }
+
+    .nav-right{
+      display:flex; align-items:center; gap:18px;
+    }
+
+    /* ✅ "Sobre" vira botão azul Conect360 */
+    .nav-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      color:#ffffff;
+      text-decoration:none;
+      font-weight:700;
+      padding:10px 16px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--cBlue1) 0%, var(--cBlue2) 55%, var(--cBlue3) 100%);
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:0 10px 24px rgba(37,99,235,.25);
+      transition:transform .15s ease, filter .15s ease, box-shadow .15s ease;
+    }
+    .nav-link:hover{
+      filter:brightness(1.05);
+      box-shadow:0 12px 30px rgba(37,99,235,.32);
+    }
+    .nav-link:active{transform:translateY(1px)}
+
+    /* ✅ Botão Entrar azul Conect360 + letras brancas */
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 16px; border-radius:999px; border:0;
+      background:linear-gradient(135deg,var(--cBlue1) 0%, var(--cBlue2) 55%, var(--cBlue3) 100%);
+      color:#ffffff; text-decoration:none; font-weight:800;
+      box-shadow:0 10px 24px rgba(37,99,235,.25);
+      cursor:pointer;
+      border:1px solid rgba(255,255,255,.10);
+      transition:transform .15s ease, filter .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover{
+      filter:brightness(1.05);
+      box-shadow:0 12px 30px rgba(37,99,235,.32);
+    }
+    .btn:active{transform:translateY(1px)}
+
+    /* CARDS / GRID (para páginas internas) */
+    .card{
+      background:var(--card);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:14px; padding:18px;
+    }
+    .grid{display:grid; gap:18px}
+    @media(min-width:900px){ .grid.cols-3{grid-template-columns:repeat(3,1fr)} }
+
+    /* FOOTER */
+    footer{
+      color:#8ea0c6;
+      padding:20px 24px;
+      border-top:1px solid rgba(255,255,255,.06);
+      width:100%;
+      text-align:left;
+    }
+
+    /* Django messages */
+    .messages{margin:18px 0; display:grid; gap:10px}
+    .msg{padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.08)}
+    .msg.info{background:#16233f}
+    .msg.success{background:#10361c}
+    .msg.warning{background:#3a2d10}
+    .msg.error{background:#3b1416}
+
+    /* Mobile */
+    @media (max-width:720px){
+      .nav{gap:10px}
+      .brand span{font-size:15px}
+      .nav-right{gap:12px}
+      .btn{padding:8px 14px}
+      .nav-link{padding:8px 14px}
+    }
+
+    
+<style>
+  /* ======================================================
+     HOME (pública) — Layout inspirado em Educational Blocks
+     mantendo identidade Conect360 (Azul + dark)
+     ====================================================== */
+
+  /* ✅ full width limpo (agora sem hack no base) */
+  .home360{
+    width:100%;
+    max-width:100%;
+    margin:0;
+    padding:0;
+  }
+
+  /* TOPBAR */
+  .home360-topbar{
+    background: linear-gradient(90deg, rgba(56,189,248,.22), rgba(37,99,235,.18), rgba(30,64,175,.14));
+    border-bottom: 1px solid rgba(255,255,255,.10);
+  }
+  .home360-topbar .inner{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 10px 18px;
+    display:flex;
+    gap:16px;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+  }
+  .home360-topbar .left{
+    display:flex;
+    gap:14px;
+    align-items:center;
+    flex-wrap:wrap;
+    color: rgba(255,255,255,.92);
+    font-size: 13px;
+  }
+  .home360-topbar .item{
+    display:inline-flex;
+    gap:8px;
+    align-items:center;
+    opacity:.95;
+  }
+  .home360-topbar .right{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    font-size: 13px;
+  }
+  .home360-topbar a{
+    color: rgba(255,255,255,.92);
+    text-decoration:none;
+    font-weight: 800;
+    opacity:.95;
+  }
+  .home360-topbar a:hover{ text-decoration:underline; opacity:1; }
+
+  /* ✅ botão "Entrar" no TOPBAR — azul Conect360 */
+.home360-topbar .btn{
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 900;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  background: linear-gradient(90deg, #38bdf8, #2563eb, #1e40af);
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 10px 26px rgba(0,0,0,.25);
+}
+.home360-topbar .btn:hover{
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+  /* HEADER (menu + logo central) */
+  .home360-header{
+    background: rgba(5,10,22,.55);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,.10);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .home360-header .inner{
+    max-width:1180px;
+    margin:0 auto;
+    padding: 14px 18px;
+    display:grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap:16px;
+    align-items:center;
+  }
+  .home360-nav{
+    display:flex;
+    gap:14px;
+    align-items:center;
+    flex-wrap:wrap;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    font-weight:900;
+    font-size:12px;
+  }
+  .home360-nav.left{ justify-content:flex-start; }
+  .home360-nav.right{ justify-content:flex-end; }
+
+  .home360-nav a{
+    color: rgba(255,255,255,.90);
+    text-decoration:none;
+    opacity:.85;
+    padding: 8px 6px;
+    border-radius: 10px;
+  }
+  .home360-nav a:hover{
+    opacity:1;
+    background: rgba(255,255,255,.06);
+  }
+  .home360-nav a.active{ opacity:1; color: var(--blue1, #38bdf8); }
+
+  /* ✅ SUA LOGO (badge) */
+  .home360-brand{
+    display:flex;
+    justify-content:center;
+  }
+  .home360-brand .badge{
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  min-width: auto;
+  box-shadow: none;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.home360-logo-img{
+  height: 56px;   /* ajuste se quiser */
+  width: auto;
+  display: block;
+}
+
+.home360-logo-name{
+  font-weight: 1000;
+  color: rgba(255,255,255,.96);
+  letter-spacing: .02em;
+  line-height: 1;
+}
+  .home360-brand .title{
+    font-weight: 1000;
+    color: rgba(255,255,255,.96);
+    letter-spacing:.02em;
+  }
+  .home360-brand .sub{
+    margin-top: 4px;
+    font-size: 12px;
+    color: rgba(255,255,255,.80);
+  }
+
+  /* HERO / SLIDER */
+  .home360-hero{
+    position:relative;
+    width:100%;
+    overflow:hidden;
+  }
+  .home360-slide{
+    display:none;
+    min-height: 760px;
+    position:relative;
+    padding: 84px 0 90px;
+    background:
+      radial-gradient(900px 520px at 15% 18%, rgba(56,189,248,.20), transparent 55%),
+      linear-gradient(180deg, rgba(2,6,23,.25), rgba(2,6,23,.88)),
+      var(--bg) center/cover no-repeat;
+  }
+  .home360-slide.active{ display:block; }
+  .home360-slide::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(90deg, rgba(2,6,23,.86) 0%, rgba(2,6,23,.55) 55%, rgba(2,6,23,.25) 100%);
+    pointer-events:none;
+  }
+  .home360-hero .container{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 18px;
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 18px;
+    align-items:center;
+  }
+  .home360-hero .content{ max-width: 820px; }
+  .home360-hero h1{
+    margin:0 0 10px;
+    font-size: 58px;
+    line-height: 1.05;
+    color: rgba(255,255,255,.98);
+    font-weight: 1000;
+  }
+  .home360-hero h3{
+    margin:0 0 14px;
+    font-size: 30px;
+    font-weight: 800;
+    color: rgba(255,255,255,.92);
+    opacity:.96;
+  }
+  .home360-hero p{
+    margin:0 0 20px;
+    color: rgba(255,255,255,.78);
+    max-width: 720px;
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  .home360-actions{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top: 10px;
+  }
+
+  /* ✅ botões do carrossel (btn-outline) — azul Conect360 */
+.home360 .btn-outline{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-weight: 1000;
+  text-decoration:none;
+
+  background: linear-gradient(90deg, #38bdf8, #2563eb, #1e40af);
+  color: #061023 !important;
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 12px 28px rgba(0,0,0,.28);
+}
+.home360 .btn-outline:hover{
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+  .home360 .btn-outline:hover{
+    background: rgba(15,23,42,.55);
+  }
+
+  /* Controles do slider */
+  .home360-ctrl{
+    position:absolute;
+    top:50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.18);
+    background: rgba(2,6,23,.40);
+    color: rgba(255,255,255,.92);
+    font-size: 26px;
+    cursor:pointer;
+    z-index: 5;
+  }
+  .home360-ctrl:hover{ background: rgba(2,6,23,.60); }
+  .home360-ctrl.prev{ left: 14px; }
+  .home360-ctrl.next{ right: 14px; }
+
+  .home360-dots{
+    position:absolute;
+    bottom: 18px;
+    left: 0; right: 0;
+    display:flex;
+    justify-content:center;
+    gap: 8px;
+    z-index: 6;
+  }
+  .home360-dot{
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.25);
+    background: rgba(255,255,255,.12);
+    cursor:pointer;
+  }
+  .home360-dot.active{
+    background: linear-gradient(90deg, #38bdf8, #2563eb);
+    border-color: rgba(255,255,255,.35);
+  }
+
+  /* SERVICES */
+  .home360-services{
+    width:100%;
+    padding: 70px 0;
+  }
+
+  .home360-services .wrap{
+    width:100vw !important;
+    max-width:none !important;
+    margin-left:calc(50% - 50vw) !important;
+    margin-right:calc(50% - 50vw) !important;
+    padding: 0 18px;
+  }
+
+  .home360-services .box{
+    width:100%;
+    max-width:none;
+    background: rgba(15,23,42,.55);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 18px;
+    box-shadow: 0 18px 55px rgba(0,0,0,.35);
+    padding: 28px;
+
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 18px;
+    align-items: start;
+  }
+  .home360-services .intro h3{ margin:0 0 8px; color: rgba(255,255,255,.95); font-weight: 1000; }
+  .home360-services .intro p{ margin:0; color: rgba(255,255,255,.72); line-height: 1.6; }
+  .home360-services .grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 14px;
+    width:100%;
+    overflow: visible;
+  }
+  .home360-services .card h6{ margin: 10px 0 4px; font-weight: 1000; color: rgba(255,255,255,.94); font-size: 14px; }
+  .home360-services .card p{ margin: 0; color: rgba(255,255,255,.70); font-size: 13px; line-height: 1.45; }
+  
+  /* ✅ CENTRALIZAÇÃO (ícone, título e texto) — cards "Temos tudo que você precisa" */
+  .home360-services .grid .card{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .home360-services .grid .card .ico{
+    margin: 0 auto 12px;
+  }
+  .home360-services .grid .card h6{
+    width: 100%;
+    text-align: center;
+    margin: 0 0 8px;
+  }
+  .home360-services .grid .card p{
+    width: 100%;
+    text-align: center;
+    margin: 0;
+  }
+
+  .home360-services .ico{
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  /* estilo “ícone amarelo outline” */
+  background: rgba(255,197,0,.08);
+  border: 1px solid rgba(255,197,0,.25);
+  color: #ffc500; /* amarelo */
+}
+
+/* SVG outline dentro do quadradinho */
+.home360-services .ico svg{
+  width: 28px;
+  height: 28px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+  .home360-services .card.bg1{ background: linear-gradient(180deg, rgba(56,189,248,.18), rgba(2,6,23,.35)); }
+  .home360-services .card.bg2{ background: linear-gradient(180deg, rgba(145,183,7,.16), rgba(2,6,23,.35)); }
+  .home360-services .card.bg3{ background: linear-gradient(180deg, rgba(239,89,33,.16), rgba(2,6,23,.35)); }
+  .home360-services .card.bg4{ background: linear-gradient(180deg, rgba(45,199,195,.16), rgba(2,6,23,.35)); }
+
+  /* SEÇÕES gerais */
+  .home360-section{ padding: 70px 0; width:100%; }
+  .home360-section .wrap{ max-width:1180px; margin:0 auto; padding:0 18px; }
+  .home360-section h2{
+    margin:0;
+    text-align:center;
+    font-size: 34px;
+    font-weight: 1000;
+    color: rgba(255,255,255,.96);
+  }
+  .home360-section .sub{
+    margin: 12px auto 26px;
+    text-align:center;
+    color: rgba(255,255,255,.72);
+    max-width: 860px;
+    line-height: 1.6;
+  }
+
+  /* Popular */
+  .home360-courses{ display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 10px; }
+  .home360-course{
+    background: rgba(15,23,42,.55);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 18px;
+    overflow:hidden;
+    box-shadow: 0 18px 55px rgba(0,0,0,.35);
+  }
+  .home360-course .top{ padding: 18px; }
+  .home360-course .thumb{
+    width:100%;
+    height: 150px;
+    border-radius: 14px;
+    background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(2,6,23,.55));
+    border: 1px solid rgba(255,255,255,.10);
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .home360-course .thumb img{ width:100%; height:100%; object-fit:cover; display:block; opacity:.95; }
+  .home360-course h5{ margin: 14px 0 8px; text-align:center; color: rgba(255,255,255,.94); font-weight: 1000; font-size: 16px; }
+  .home360-course p{ margin:0; text-align:center; color: rgba(255,255,255,.70); font-size: 13px; line-height: 1.5; }
+  .home360-course .bottom{
+    padding: 14px 18px 18px;
+    border-top: 1px solid rgba(255,255,255,.08);
+    display:flex;
+    justify-content:center;
+  }
+
+  /* ABOUT */
+
+  /* ABOUT — deixar a seção mais larga que o padrão */
+  .home360-about .wrap{
+    max-width: 2200px;
+  }
+  .home360-about{
+    background: rgba(15,23,42,.35);
+    border-top: 1px solid rgba(255,255,255,.08);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .home360-kicker{
+    display:inline-block;
+    color: #38bdf8;
+    font-weight: 1000;
+    letter-spacing:.10em;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+  .home360-about .cols{
+    display:grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 18px;
+    align-items:stretch;
+  }
+  .home360-about h2{ text-align:left; margin:0 0 10px; font-size: 34px; }
+  .home360-about .text{ color: rgba(255,255,255,.72); line-height:1.7; margin: 0 0 14px; }
+  .home360-about .highlight{
+    background: rgba(2,6,23,.35);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 14px;
+    padding: 16px;
+    margin-top: 14px;
+  }
+  .home360-about .highlight h4{ margin:0 0 6px; color: rgba(255,255,255,.94); font-weight: 1000; font-size: 15px; }
+  .home360-about ul{ margin: 0; padding-left: 18px; color: rgba(255,255,255,.72); line-height: 1.7; font-size: 14px; }
+  .home360-about .tiles{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+  .home360-about .tile{
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: linear-gradient(180deg, rgba(2,6,23,.25), rgba(2,6,23,.65)), var(--bg) center/cover no-repeat;
+    min-height: 160px;
+  }
+
+  .home360-about .about-visual{
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .home360-about .about-visual img{
+    width: 100%;
+    height: 100%;
+    max-height: 650px;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,.12);
+    box-shadow: 0 18px 55px rgba(0,0,0,.35);
+  }
+
+  /* EVENTS */
+  .home360-events .head{
+    display:grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+    align-items:end;
+    margin-bottom: 18px;
+  }
+
+  .home360-events .head p{
+    margin:0;
+    color: rgba(255,255,255,.72);
+    line-height: 1.6;
+  }
+
+  .home360-events .head.home360-events-head-full{
+    display:block;
+    max-width: 980px;
+    margin: 0 auto 26px;
+    text-align:center;
+  }
+
+  .home360-events .head.home360-events-head-full .home360-kicker{
+    display:block;
+    text-align:center;
+    margin-bottom: 8px;
+  }
+
+  .home360-events .head.home360-events-head-full p{
+    max-width: 900px;
+    margin: 12px auto 0;
+    text-align:center;
+    color: rgba(255,255,255,.72);
+    line-height: 1.6;
+  }
+  .home360-events .list{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+  .home360-event{
+    display:grid;
+    grid-template-columns: 86px 1fr;
+    gap: 12px;
+    background: rgba(15,23,42,.55);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 18px;
+    overflow:hidden;
+    box-shadow: 0 18px 55px rgba(0,0,0,.35);
+  }
+  .home360-event .date{
+    background: linear-gradient(180deg, #2563eb, #1e40af);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding: 16px 0;
+    color: rgba(255,255,255,.96);
+  }
+
+  .home360-events .list .home360-event:nth-child(1) .date{
+    background: linear-gradient(180deg, #38bdf8, #2563eb);
+  }
+
+  .home360-events .list .home360-event:nth-child(2) .date{
+    background: linear-gradient(180deg, #8b5cf6, #5b21b6);
+  }
+
+  .home360-events .list .home360-event:nth-child(3) .date{
+    background: linear-gradient(180deg, #f97316, #c2410c);
+  }
+
+  .home360-events .list .home360-event:nth-child(4) .date{
+    background: linear-gradient(180deg, #22c55e, #15803d);
+  }
+
+  .home360-events .list .home360-event:nth-child(5) .date{
+    background: linear-gradient(180deg, #eab308, #a16207);
+  }
+
+  .home360-events .list .home360-event:nth-child(6) .date{
+    background: linear-gradient(180deg, #ec4899, #be185d);
+  }
+  .home360-event .date .n{ font-size: 28px; font-weight: 1000; line-height: 1; }
+  .home360-event .date .m{ margin-top: 6px; font-size: 12px; letter-spacing:.14em; font-weight: 1000; opacity:.95; }
+  .home360-event .body{ padding: 16px; }
+  .home360-event h6{ margin: 0 0 8px; font-weight: 1000; color: rgba(255,255,255,.94); font-size: 16px; }
+  .home360-event .body p{ margin: 0 0 12px; color: rgba(255,255,255,.72); line-height: 1.6; font-size: 14px; }
+
+  /* FEATURED */
+  /* DEMO (substitui a seção de comunicação por formulário) */
+  .home360-comunicacao .wrap{
+    max-width: 1180px; /* se quiser mais largo, pode subir p/ 1440px */
+  }
+
+  .home360-title{
+    text-align:center;
+    margin: 0 0 6px;
+    font-size: 34px;
+    font-weight: 1000;
+  }
+
+  .home360-subtitle{
+    text-align:center;
+    margin: 0 0 18px;
+    color: rgba(255,255,255,.72);
+    line-height: 1.6;
+  }
+
+  .demo-grid{
+    display:grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .demo-card{
+    background: rgba(15,23,42,.35);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+  .demo-card h3{
+    margin: 0 0 12px;
+    font-size: 16px;
+    font-weight: 1000;
+    color: rgba(255,255,255,.94);
+  }
+  .demo-info-title{
+    text-align: center;
+    margin: 10px 0 12px;
+  }
+
+  .demo-form label{
+    display:block;
+    margin-bottom: 12px;
+  }
+
+  .demo-form label span{
+    display:block;
+    font-size: 12px;
+    letter-spacing:.04em;
+    color: rgba(255,255,255,.72);
+    margin: 0 0 6px;
+  }
+
+  .demo-form input{
+    width: 100%;
+    padding: 12px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(2,6,23,.35);
+    color: rgba(255,255,255,.92);
+    outline: none;
+  }
+
+  .demo-form input:focus{
+    border-color: rgba(56,189,248,.55);
+    box-shadow: 0 0 0 3px rgba(56,189,248,.12);
+  }
+
+  .demo-actions{
+    display:flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .btn360{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap: 8px;
+    padding: 11px 14px;
+    border-radius: 12px;
+    font-weight: 900;
+    border: 1px solid rgba(255,255,255,.12);
+    text-decoration:none;
+    cursor:pointer;
+  }
+
+  .btn360-primary{
+    color: rgba(255,255,255,.98);
+    background: linear-gradient(90deg, #38bdf8, #2563eb, #1e40af);
+    box-shadow: 0 12px 28px rgba(37,99,235,.28);
+  }
+
+  .btn360-whats{
+    color: rgba(255,255,255,.98);
+    background: linear-gradient(90deg, #22c55e, #16a34a, #15803d);
+    box-shadow: 0 12px 28px rgba(34,197,94,.24);
+  }
+
+  .btn360-primary:hover,
+  .btn360-whats:hover{
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+  }
+
+  .demo-info ul{
+    margin: 0;
+    padding-left: 18px;
+    color: rgba(255,255,255,.72);
+    line-height: 1.7;
+    font-size: 14px;
+  }
+  .demo-media{
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  overflow: hidden;
+  background: rgba(2,6,23,.35);
+  margin: 10px 0 12px;
+}
+
+.demo-media img{
+  width: 100%;
+  height: 220px;
+  display: block;
+  object-fit: cover;
+}
+
+  /* Responsivo */
+  @media (max-width: 980px){
+    .demo-grid{ grid-template-columns: 1fr; }
+  }
+
+  /* TESTIMONIAL */
+  .home360-testimonial{ position:relative; padding: 80px 0; }
+  .home360-testimonial::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(900px 500px at 20% 10%, rgba(56,189,248,.10), transparent 60%),
+      linear-gradient(180deg, rgba(2,6,23,.55), rgba(2,6,23,.92));
+    border-top: 1px solid rgba(255,255,255,.08);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .home360-testimonial .wrap{
+    position:relative;
+    z-index:2;
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 18px;
+  }
+  .home360-testimonial .card{
+    max-width: 760px;
+    margin: 0 auto;
+    background: rgba(15,23,42,.65);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 18px;
+    box-shadow: 0 18px 55px rgba(0,0,0,.35);
+    padding: 22px;
+  }
+  .home360-testimonial .head{ display:flex; gap:12px; align-items:center; margin-bottom: 12px; }
+  .home360-testimonial .avatar{ width: 52px; height: 52px; border-radius: 999px; background: linear-gradient(180deg, #38bdf8, #2563eb); }
+  .home360-testimonial .name{ font-weight: 1000; color: rgba(255,255,255,.96); }
+  .home360-testimonial .role{ color: rgba(255,255,255,.72); font-size: 13px; margin-top: 2px; }
+  .home360-testimonial .text{ margin:0 0 10px; color: rgba(255,255,255,.88); line-height: 1.65; }
+  .home360-testimonial .stars{ color: #38bdf8; font-weight: 1000; letter-spacing:.12em; }
+
+  .home360-cta-final{
+    position:relative;
+    padding: 78px 0;
+    border-top: 1px solid rgba(255,255,255,.08);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    background:
+      radial-gradient(900px 420px at 50% 0%, rgba(56,189,248,.14), transparent 60%),
+      linear-gradient(180deg, rgba(2,6,23,.72), rgba(2,6,23,.95));
+  }
+
+  .home360-cta-final .wrap{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 18px;
+  }
+
+  .home360-cta-final .cta-box{
+    max-width: 980px;
+    margin: 0 auto;
+    text-align:center;
+    background: rgba(15,23,42,.58);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 22px;
+    box-shadow: 0 22px 70px rgba(0,0,0,.35);
+    padding: 34px;
+  }
+
+  .home360-cta-final h2{
+    margin: 0;
+    color: rgba(255,255,255,.98);
+    font-size: 36px;
+    line-height: 1.12;
+    font-weight: 1000;
+  }
+
+  .home360-cta-final .cta-text{
+    max-width: 800px;
+    margin: 14px auto 0;
+    color: rgba(255,255,255,.74);
+    line-height: 1.65;
+    font-size: 15px;
+  }
+
+  .cta-final-grid{
+    display:grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .cta-final-item{
+    position: relative;
+    overflow: hidden;
+    text-align:left;
+    background: linear-gradient(180deg, rgba(15,23,42,.72), rgba(2,6,23,.46));
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 18px;
+    padding: 18px 18px 18px 20px;
+    box-shadow: 0 16px 38px rgba(0,0,0,.22);
+  }
+
+  .cta-final-item::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    width:5px;
+    background: linear-gradient(180deg, #38bdf8, #2563eb);
+  }
+
+  .cta-final-item:nth-child(2)::before{
+    background: linear-gradient(180deg, #8b5cf6, #5b21b6);
+  }
+
+  .cta-final-item:nth-child(3)::before{
+    background: linear-gradient(180deg, #22c55e, #15803d);
+  }
+
+  .cta-final-item::after{
+    content:"";
+    position:absolute;
+    right:-40px;
+    top:-40px;
+    width:110px;
+    height:110px;
+    border-radius:999px;
+    background: rgba(56,189,248,.10);
+  }
+
+  .cta-final-item:nth-child(2)::after{
+    background: rgba(139,92,246,.12);
+  }
+
+  .cta-final-item:nth-child(3)::after{
+    background: rgba(34,197,94,.12);
+  }
+
+  .cta-final-item strong{
+    position:relative;
+    z-index:1;
+    display:block;
+    color: rgba(255,255,255,.98);
+    font-weight: 1000;
+    margin-bottom: 8px;
+    font-size: 15px;
+  }
+
+  .cta-final-item span{
+    position:relative;
+    z-index:1;
+    display:block;
+    color: rgba(255,255,255,.74);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .cta-final-item:hover{
+    transform: translateY(-2px);
+    border-color: rgba(56,189,248,.28);
+    box-shadow: 0 20px 48px rgba(0,0,0,.30);
+  }
+
+  .cta-final-actions{
+    margin-top: 24px;
+    justify-content:center;
+  }
+
+  .cta-final-actions .btn-outline{
+    color: #ffffff !important;
+  }
+
+  .cta-final-actions .cta-whats{
+    background: linear-gradient(90deg, #22c55e, #16a34a, #15803d);
+  }
+
+  /* FOOTER */
+  .home360-footer{
+    background: rgba(2,6,23,.92);
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding: 48px 0 18px;
+  }
+  .home360-footer .wrap{ max-width:none; margin:0 auto; padding: 0 18px; }
+  .home360-footer .grid{
+    display:grid;
+    grid-template-columns: 1.4fr 1fr 1fr .8fr;
+    gap: 16px;
+    align-items:start;
+  }
+  .home360-footer .brand{ font-weight: 1000; font-size: 18px; margin-bottom: 8px; color: #38bdf8; }
+  .home360-footer p, .home360-footer li{ color: rgba(255,255,255,.72); font-size: 14px; line-height: 1.6; }
+  .home360-footer h4{ margin: 0 0 10px; color: rgba(255,255,255,.92); font-weight: 1000; }
+  .home360-footer ul{ margin:0; padding-left: 18px; }
+  .home360-footer a{ color: rgba(255,255,255,.92); text-decoration:none; font-weight: 800; }
+  .home360-footer a:hover{ text-decoration:underline; }
+  .home360-footer .bottom{
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,.10);
+    display:flex;
+    justify-content:space-between;
+    gap: 12px;
+    color: rgba(255,255,255,.62);
+    font-size: 13px;
+  }
+  .home360-footer .footer-actions{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    align-items:flex-start;
+  }
+
+  .home360-footer .footer-actions a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width: 128px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    color: rgba(255,255,255,.96) !important;
+    border: 1px solid rgba(255,255,255,.12) !important;
+    text-decoration: none;
+    font-weight: 1000;
+  }
+
+  .home360-footer .footer-actions .btn{
+    background: linear-gradient(90deg, rgba(56,189,248,.95), rgba(37,99,235,.95)) !important;
+  }
+
+  .home360-footer .footer-actions .footer-whats{
+    background: linear-gradient(90deg, #22c55e, #16a34a, #15803d) !important;
+  }
+
+  .home360-footer .footer-actions a:hover{
+    text-decoration: none;
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+  }
+
+  /* ✅ BOTÃO INSTALAR CONECT360 */
+  .btn-install-conect360{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-weight: 900;
+    text-decoration:none;
+    cursor:pointer;
+    border: 1px solid rgba(255,255,255,.18);
+    background: linear-gradient(90deg, #22c55e, #16a34a, #15803d);
+    color: #ffffff !important;
+    box-shadow: 0 10px 26px rgba(0,0,0,.25);
+  }
+
+  .btn-install-conect360:hover{
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+  }
+
+  /* RESPONSIVO */
+  @media (max-width: 980px){
+    .home360-header .inner{ grid-template-columns: 1fr; gap: 12px; }
+    .home360-nav.left, .home360-nav.right{ justify-content:center; }
+    .home360-hero .container{ grid-template-columns: 1fr; }
+    .home360-services .box{ grid-template-columns: 1fr; }
+    .home360-services .grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .home360-courses{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .home360-about .cols{ grid-template-columns: 1fr; }
+    .home360-events .list{ grid-template-columns: 1fr; }
+    .home360-featured .grid{ grid-template-columns: 1fr; }
+    .home360-footer .grid{ grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px){
+    .home360-services .grid{ grid-template-columns: 1fr; }
+    .home360-courses{ grid-template-columns: 1fr; }
+    .home360-footer .grid{ grid-template-columns: 1fr; }
+    .home360-hero h1{ font-size: 42px; }
+    .home360-hero h3{ font-size: 24px; }
+    .home360-slide{ min-height: 680px; }
+  }
+
+/* ✅ CARROSSEL: força o botão .btn (Entrar) a ficar azul Conect360 */
+.home360-hero .btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-weight: 1000;
+  text-decoration:none;
+
+  background: linear-gradient(90deg, #38bdf8, #2563eb, #1e40af);
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 12px 28px rgba(0,0,0,.28);
+}
+.home360-hero .btn:hover{
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+/* ✅ texto branco nos botões do carrossel */
+.home360-hero .btn-outline{
+  color: #ffffff !important;
+}
+
+/* ✅ botões do carrossel com cores diferentes */
+.home360-hero .home360-actions a:nth-child(1){
+  background: linear-gradient(90deg, #38bdf8, #2563eb, #1e40af) !important;
+  color: #ffffff !important;
+  border-color: rgba(56,189,248,.35) !important;
+}
+
+.home360-hero .home360-actions a:nth-child(2){
+  background: linear-gradient(90deg, #f97316, #ea580c, #c2410c) !important;
+  color: #ffffff !important;
+  border-color: rgba(249,115,22,.35) !important;
+}
+
+.home360-hero .home360-actions a:nth-child(3){
+  background: linear-gradient(90deg, #22c55e, #16a34a, #15803d) !important;
+  color: #ffffff !important;
+  border-color: rgba(34,197,94,.35) !important;
+}
+
+.home360-hero .home360-actions a:hover{
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+/* ======================================================
+   MOBILE — somente página pública sobre/home
+   Não altera desktop
+   ====================================================== */
+@media (max-width: 720px){
+  .home360{
+    overflow-x:hidden;
+  }
+
+  .home360-topbar .inner{
+    padding: 10px 14px;
+    gap: 10px;
+    justify-content:center;
+  }
+
+  .home360-topbar .left{
+    width:100%;
+    justify-content:center;
+    gap:8px;
+    font-size:12px;
+    text-align:center;
+  }
+
+  .home360-topbar .item{
+    justify-content:center;
+  }
+
+  .home360-topbar .right{
+    width:100%;
+    justify-content:center;
+  }
+
+  .home360-topbar .btn{
+    width:100%;
+    max-width:280px;
+    min-height:42px;
+  }
+
+  .home360-header{
+    position:relative;
+    top:auto;
+  }
+
+  .home360-header .inner{
+    padding: 12px 14px 14px;
+    gap:10px;
+  }
+
+  .home360-brand{
+    order:-1;
+  }
+
+  .home360-brand .badge img{
+    height:72px !important;
+  }
+
+  .home360-nav{
+    width:100%;
+    justify-content:center !important;
+    gap:6px;
+    font-size:10px;
+    letter-spacing:.04em;
+  }
+
+  .home360-nav a{
+    padding:8px 9px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:999px;
+  }
+
+  .home360-nav.right a:first-child{
+    flex:1 1 100%;
+    text-align:center;
+  }
+
+  .home360-slide{
+    min-height:620px;
+    padding:58px 0 74px;
+    background-position:center center;
+  }
+
+  .home360-slide::before{
+    background: linear-gradient(180deg, rgba(2,6,23,.88) 0%, rgba(2,6,23,.70) 55%, rgba(2,6,23,.88) 100%);
+  }
+
+  .home360-hero .container{
+    padding:0 18px;
+    min-height:480px;
+    align-items:center;
+  }
+
+  .home360-hero .content{
+    max-width:100%;
+    text-align:center;
+  }
+
+  .home360-hero h1{
+    font-size:38px;
+    line-height:1.05;
+    margin-bottom:10px;
+  }
+
+  .home360-hero h3{
+    font-size:21px;
+    line-height:1.25;
+    margin-bottom:12px;
+  }
+
+  .home360-hero p{
+    font-size:14px;
+    line-height:1.55;
+    margin-bottom:18px;
+  }
+
+  .home360-actions{
+    justify-content:center;
+    gap:10px;
+  }
+
+  .home360-hero .btn,
+  .home360-hero .btn-outline,
+  .home360 .btn-outline{
+    width:100%;
+    max-width:310px;
+    min-height:46px;
+    padding:12px 14px;
+    text-align:center;
+  }
+
+  .home360-ctrl{
+    width:38px;
+    height:38px;
+    font-size:22px;
+    background:rgba(2,6,23,.62);
+  }
+
+  .home360-ctrl.prev{
+    left:8px;
+  }
+
+  .home360-ctrl.next{
+    right:8px;
+  }
+
+  .home360-dots{
+    bottom:14px;
+  }
+
+  .home360-services{
+    padding:42px 0;
+  }
+
+  .home360-services .wrap{
+    padding:0 14px;
+  }
+
+  .home360-services .box{
+    padding:18px;
+    border-radius:16px;
+    gap:16px;
+  }
+
+  .home360-services .intro{
+    text-align:center;
+  }
+
+  .home360-services .intro h3{
+    font-size:22px;
+    line-height:1.2;
+  }
+
+  .home360-services .intro p{
+    font-size:14px;
+  }
+
+  .home360-services .grid{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .home360-services .grid .card{
+    padding:16px 14px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.10);
+  }
+
+  .home360-section{
+    padding:46px 0;
+  }
+
+  .home360-section .wrap,
+  .home360-about .wrap,
+  .home360-comunicacao .wrap,
+  .home360-testimonial .wrap{
+    padding:0 14px;
+  }
+
+  .home360-section h2,
+  .home360-title{
+    font-size:26px;
+    line-height:1.18;
+  }
+
+  .home360-section .sub,
+  .home360-subtitle{
+    font-size:14px;
+    line-height:1.55;
+    margin-bottom:18px;
+  }
+
+  .home360-courses{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .home360-course{
+    border-radius:16px;
+  }
+
+  .home360-course .top{
+    padding:14px;
+  }
+
+  .home360-course .thumb{
+    height:170px;
+  }
+
+  .home360-about .cols{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+
+  .home360-about h2{
+    text-align:center;
+    font-size:28px;
+  }
+
+  .home360-kicker{
+    display:block;
+    text-align:center;
+  }
+
+  .home360-about .text{
+    font-size:14px;
+    line-height:1.65;
+    text-align:left;
+  }
+
+  .home360-about .highlight{
+    padding:14px;
+  }
+
+  .home360-about .highlight h4{
+    text-align:center;
+  }
+
+  .home360-about ul{
+    padding-left:18px;
+    font-size:14px;
+  }
+
+  .home360-about .tiles{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .home360-about .tile{
+    min-height:130px;
+  }
+
+  .home360-about .about-visual img{
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  .home360-events .head{
+    grid-template-columns:1fr;
+    gap:10px;
+    text-align:center;
+  }
+
+  .home360-events .head h2{
+    text-align:center !important;
+    font-size:28px !important;
+  }
+
+  .home360-events .head p{
+    font-size:14px;
+  }
+
+  .home360-events .list{
+    grid-template-columns:1fr;
+  }
+
+  .home360-event{
+    grid-template-columns:64px 1fr;
+    border-radius:16px;
+  }
+
+  .home360-event .date{
+    padding:14px 0;
+  }
+
+  .home360-event .date .n{
+    font-size:24px;
+  }
+
+  .home360-event .body{
+    padding:14px;
+  }
+
+  .home360-event h6{
+    font-size:15px;
+  }
+
+  .home360-event .body p{
+    font-size:13px;
+    line-height:1.55;
+  }
+
+  .demo-grid{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .demo-card{
+    padding:14px;
+    border-radius:16px;
+  }
+
+  .demo-card h3{
+    text-align:center;
+  }
+
+  .demo-form input{
+    min-height:46px;
+    font-size:16px;
+  }
+
+  .demo-actions{
+    flex-direction:column;
+  }
+
+  .btn360{
+    width:100%;
+    min-height:46px;
+    text-align:center;
+  }
+
+  .demo-media img{
+    height:190px;
+  }
+
+  .demo-info ul{
+    font-size:14px;
+    line-height:1.65;
+  }
+
+  .home360-testimonial{
+    padding:52px 0;
+  }
+
+  .home360-testimonial .card{
+    padding:18px;
+    border-radius:16px;
+  }
+
+  .home360-testimonial .head{
+    align-items:center;
+  }
+
+  .home360-testimonial .text{
+    font-size:14px;
+    line-height:1.6;
+  }
+
+  .home360-cta-final{
+    padding: 52px 0;
+  }
+
+  .home360-cta-final .cta-box{
+    padding: 22px 16px;
+    border-radius: 18px;
+  }
+
+  .home360-cta-final h2{
+    font-size: 28px;
+  }
+
+  .home360-cta-final .cta-text{
+    font-size: 14px;
+  }
+
+  .cta-final-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .cta-final-item{
+    text-align:center;
+  }
+
+  .cta-final-actions{
+    justify-content:center;
+  }
+
+  .t-avatar{
+    width:52px;
+    height:52px;
+    object-fit:cover;
+    border-radius:999px;
+  }
+
+  .home360-footer{
+    padding:38px 0 18px;
+  }
+
+  .home360-footer .wrap{
+    padding:0 14px;
+  }
+
+  .home360-footer .grid{
+    grid-template-columns:1fr;
+    gap:18px;
+    text-align:center;
+  }
+
+  .home360-footer ul{
+    list-style-position:inside;
+    padding-left:0;
+  }
+
+  .home360-footer .bottom{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+
+  .home360-footer .footer-actions{
+    align-items:center;
+  }
+
+  .home360-footer .footer-actions a{
+    width:100%;
+    max-width:280px;
+  }
+}
+
+@media (max-width: 414px){
+  .home360-topbar .left{
+    flex-direction:column;
+    gap:6px;
+  }
+
+  .home360-brand .badge img{
+    height:62px !important;
+  }
+
+  .home360-nav{
+    gap:5px;
+  }
+
+  .home360-nav a{
+    font-size:10px;
+    padding:7px 8px;
+  }
+
+  .home360-slide{
+    min-height:590px;
+    padding-top:46px;
+  }
+
+  .home360-hero .container{
+    min-height:460px;
+    padding:0 16px;
+  }
+
+  .home360-hero h1{
+    font-size:34px;
+  }
+
+  .home360-hero h3{
+    font-size:19px;
+  }
+
+  .home360-hero p{
+    font-size:13.5px;
+  }
+
+  .home360-ctrl{
+    top:auto;
+    bottom:40px;
+    transform:none;
+  }
+
+  .home360-ctrl.prev{
+    left:14px;
+  }
+
+  .home360-ctrl.next{
+    right:14px;
+  }
+
+  .home360-section h2,
+  .home360-title{
+    font-size:24px;
+  }
+
+  .home360-services .intro h3{
+    font-size:21px;
+  }
+
+  .home360-about .tiles{
+    grid-template-columns:1fr;
+  }
+
+  .home360-about .tile{
+    min-height:170px;
+  }
+
+  .home360-event{
+    grid-template-columns:1fr;
+  }
+
+  .home360-event .date{
+    min-height:58px;
+    flex-direction:row;
+    gap:8px;
+  }
+
+  .home360-event .date .n{
+    font-size:22px;
+  }
+
+  .demo-media img{
+    height:170px;
+  }
+}
+
+@media (max-width: 390px){
+  .home360-header .inner{
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  .home360-nav a{
+    font-size:9.5px;
+    padding:7px 7px;
+  }
+
+  .home360-hero h1{
+    font-size:31px;
+  }
+
+  .home360-hero h3{
+    font-size:18px;
+  }
+
+  .home360-hero .btn,
+  .home360-hero .btn-outline,
+  .home360 .btn-outline,
+  .btn360{
+    max-width:100%;
+  }
+
+  .home360-services .wrap,
+  .home360-section .wrap,
+  .home360-about .wrap,
+  .home360-comunicacao .wrap,
+  .home360-testimonial .wrap,
+  .home360-footer .wrap{
+    padding-left:12px;
+    padding-right:12px;
+  }
+}
+
+</style>
+<script>
+  function enviarDemoWhats(){
+    const nome = (document.querySelector('input[name="nome"]')?.value || '').trim();
+    const tel  = (document.querySelector('input[name="telefone"]')?.value || '').trim();
+    const esc  = (document.querySelector('input[name="escola"]')?.value || '').trim();
+
+    if(!nome || !tel || !esc){
+      alert("Preencha Nome, Telefone e Nome da escola.");
+      return;
+    }
+
+    const numero = "5531990604590"; // <-- troque aqui (só dígitos)
+
+    const msg =
+      `Olá! Quero agendar uma demonstração do Conect360.%0A%0A` +
+      `Nome: ${encodeURIComponent(nome)}%0A` +
+      `Telefone: ${encodeURIComponent(tel)}%0A` +
+      `Escola: ${encodeURIComponent(esc)}`;
+
+    window.open(`https://wa.me/${numero}?text=${msg}`, "_blank", "noopener");
+  }
+</script>
+
+
+  </style>
 </head>
 <body>
+<div class="wrap">
+
+  
+
+  <main class="">
+    
+    
 <div class="home360">
 
   <!-- TOPBAR -->
   <div class="home360-topbar">
     <div class="inner">
       <div class="left">
-        <span class="item">☎ <strong>(31) 99981-3140</strong></span>
-        <span class="item">✉ <strong>suporte@conect360.com.br</strong></span>
+<span class="item">☎ <strong>(31) 99060-4590</strong></span>
+<span class="item">✉ <strong>conect360.app@gmail.com</strong></span>
       </div>
 
       <div class="right">
@@ -27,7 +1846,9 @@
            Instalar Conect360
         </button>
 
-        <a class="btn" href="acesso.html">Entrar</a>
+        
+          <a class="btn" href="/login/">Entrar</a>
+        
       </div>
     </div>
   </div>
@@ -37,7 +1858,7 @@
     <div class="inner">
 
       <nav class="home360-nav left">
-        <a class="active" href="index.html">HOME</a>
+        <a class="active" href="/">HOME</a>
         <a href="#sobre">SOBRE</a>
         <a href="#comprar">RECURSOS</a>
       </nav>
@@ -46,7 +1867,7 @@
   <div class="home360-brand">
     <div class="badge">
       <img
-        src="assets/img/logo-conect360.png"
+        src="./assets/img/logo-conect360.png"
         alt="Conect360"
         style="height:100px;width:auto;display:block;margin:0 auto;"
       />
@@ -60,12 +1881,60 @@
 
     </div>
   </header>
+
+  <!-- VÍDEO DE APRESENTAÇÃO -->
+  <section
+    aria-label="Apresentação do Conect360"
+    style="
+      width: 100%;
+      padding: 28px 18px;
+      background: transparent;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    "
+  >
+    <div
+      style="
+        width: 100%;
+        max-width: 1180px;
+        margin: 0 auto;
+      "
+    >
+      <div
+        style="
+          position: relative;
+          width: 100%;
+          padding-top: 56.25%;
+          overflow: hidden;
+          border-radius: 20px;
+          border: 1px solid rgba(255,255,255,.14);
+          background: rgba(2,6,23,.65);
+          box-shadow: 0 22px 70px rgba(0,0,0,.45);
+        "
+      >
+        <iframe
+          src="https://www.youtube.com/embed/0NtApOlqQn4"
+          title="Conheça o Conect360"
+          loading="eager"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          style="
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+          "
+        ></iframe>
+      </div>
+    </div>
+  </section>
   
   <!-- HERO / SLIDER - CARROSSEL -->
 <section class="home360-hero" aria-label="Destaques do Conect360">
 
   <!-- Slide 1 — Conect360 -->
-  <div class="home360-slide active" style="--bg:url('../img/banner.jpg?v=20260617-1')">
+  <div class="home360-slide active" style="--bg:url('./assets/img/banner.jpg?v=20260617-1')">
     <div class="container">
       <div class="content">
         <h1>Conect360</h1>
@@ -77,7 +1946,9 @@
         </p>
         <div class="home360-actions">
           <a class="btn-outline" href="#comunicacao">Agendar demonstração</a>
-          <a class="btn" href="acesso.html">Entrar</a>
+          
+            <a class="btn" href="/login/">Entrar</a>
+          
         </div>
       </div>
       <div></div>
@@ -85,7 +1956,7 @@
   </div>
 
   <!-- Slide 2 — Secretaria -->
-  <div class="home360-slide" style="--bg:url('../img/slide-secretaria.jpg')">
+  <div class="home360-slide" style="--bg:url('./assets/img/slide-secretaria.jpg')">
     <div class="container">
       <div class="content">
         <h1>Secretaria</h1>
@@ -105,7 +1976,7 @@
   </div>
 
   <!-- Slide 3 — Gestão -->
-  <div class="home360-slide" style="--bg:url('../img/slide-gestao.jpg?v=20260617-gestao-1')">
+  <div class="home360-slide" style="--bg:url('./assets/img/slide-gestao.jpg?v=20260617-gestao-1')">
     <div class="container">
       <div class="content">
         <h1>Gestão</h1>
@@ -125,7 +1996,7 @@
   </div>
 
   <!-- Slide 4 — Supervisão -->
-  <div class="home360-slide" style="--bg:url('../img/slide-supervisao.jpg')">
+  <div class="home360-slide" style="--bg:url('./assets/img/slide-supervisao.jpg')">
     <div class="container">
       <div class="content">
         <h1>Supervisão</h1>
@@ -145,7 +2016,7 @@
   </div>
 
   <!-- Slide 5 — Coordenação -->
-  <div class="home360-slide" style="--bg:url('../img/slide-coordenacao.jpg?v=20260617-coordenacao-1')">
+  <div class="home360-slide" style="--bg:url('./assets/img/slide-coordenacao.jpg?v=20260617-coordenacao-1')">
     <div class="container">
       <div class="content">
         <h1>Coordenação</h1>
@@ -165,7 +2036,7 @@
   </div>
 
   <!-- Slide 6 — Professor -->
-  <div class="home360-slide" style="--bg:url('../img/slide-professor.jpg')">
+  <div class="home360-slide" style="--bg:url('./assets/img/slide-professor.jpg')">
     <div class="container">
       <div class="content">
         <h1>Professor</h1>
@@ -185,7 +2056,7 @@
   </div>
 
   <!-- Slide 7 — Professor da Educação Infantil -->
-  <div class="home360-slide" style="--bg:url('../img/slide-professor-ei.jpg')">
+  <div class="home360-slide" style="--bg:url('./assets/img/slide-professor-ei.jpg')">
     <div class="container">
       <div class="content">
         <h1>Educação Infantil</h1>
@@ -205,7 +2076,7 @@
   </div>
 
   <!-- Slide 8 — Estudante -->
-  <div class="home360-slide" style="--bg:url('../img/slide-estudante.jpg')">
+  <div class="home360-slide" style="--bg:url('./assets/img/slide-estudante.jpg')">
     <div class="container">
       <div class="content">
         <h1>Estudante</h1>
@@ -225,7 +2096,7 @@
   </div>
 
   <!-- Slide 9 — Visão Gamificada -->
-  <div class="home360-slide" style="--bg:url('../img/slide-gamificacao.jpg')">
+  <div class="home360-slide" style="--bg:url('./assets/img/slide-gamificacao.jpg')">
     <div class="container">
       <div class="content">
         <h1>Conect Garden, Park, District e City</h1>
@@ -245,7 +2116,7 @@
   </div>
 
   <!-- Slide 10 — Responsável -->
-  <div class="home360-slide" style="--bg:url('../img/slide-responsavel.jpg')">
+  <div class="home360-slide" style="--bg:url('./assets/img/slide-responsavel.jpg')">
     <div class="container">
       <div class="content">
         <h1>Responsável</h1>
@@ -265,7 +2136,7 @@
   </div>
 
   <!-- Slide 11 — Responsável da Educação Infantil -->
-  <div class="home360-slide" style="--bg:url('../img/slide-responsavel-ei.jpg')">
+  <div class="home360-slide" style="--bg:url('./assets/img/slide-responsavel-ei.jpg')">
     <div class="container">
       <div class="content">
         <h1>Responsável EI</h1>
@@ -285,7 +2156,7 @@
   </div>
 
   <!-- Slide 12 — Portaria -->
-  <div class="home360-slide" style="--bg:url('../img/slide-portaria.jpg')">
+  <div class="home360-slide" style="--bg:url('./assets/img/slide-portaria.jpg')">
     <div class="container">
       <div class="content">
         <h1>Portaria</h1>
@@ -305,7 +2176,7 @@
   </div>
 
   <!-- Slide 13 — Nexo IA -->
-  <div class="home360-slide" style="--bg:url('../img/slide-nexo-ia.jpg')">
+  <div class="home360-slide" style="--bg:url('./assets/img/slide-nexo-ia.jpg')">
     <div class="container">
       <div class="content">
         <h1>Nexo IA</h1>
@@ -325,7 +2196,7 @@
   </div>
 
   <!-- Slide 14 — Biblioteca -->
-  <div class="home360-slide" style="--bg:url('../img/biblioteca.jpg')">
+  <div class="home360-slide" style="--bg:url('./assets/img/biblioteca.jpg')">
     <div class="container">
       <div class="content">
         <h1>Biblioteca</h1>
@@ -599,7 +2470,7 @@
         <div class="home360-course">
           <div class="top">
             <div class="thumb">
-              <img src="assets/img/diferencial-visao-360.png?v=20260617-1" alt="Visão 360° da escola">
+              <img src="./assets/img/diferencial-visao-360.png?v=20260617-1" alt="Visão 360° da escola">
             </div>
             <h5>Visão 360° da escola</h5>
             <p>
@@ -612,7 +2483,7 @@
         <div class="home360-course">
           <div class="top">
             <div class="thumb">
-              <img src="assets/img/diferencial-historico-analise.png?v=20260617-1" alt="Histórico escolar com análise pedagógica">
+              <img src="./assets/img/diferencial-historico-analise.png?v=20260617-1" alt="Histórico escolar com análise pedagógica">
             </div>
             <h5>Histórico com análise pedagógica</h5>
             <p>
@@ -625,7 +2496,7 @@
         <div class="home360-course">
           <div class="top">
             <div class="thumb">
-              <img src="assets/img/diferencial-nexo-ia.png?v=20260617-1" alt="Inteligência artificial pedagógica">
+              <img src="./assets/img/diferencial-nexo-ia.png?v=20260617-1" alt="Inteligência artificial pedagógica">
             </div>
             <h5>Inteligência artificial pedagógica</h5>
             <p>
@@ -638,7 +2509,7 @@
         <div class="home360-course">
           <div class="top">
             <div class="thumb">
-              <img src="assets/img/diferencial-familias-estudantes.png?v=20260617-1" alt="Experiência moderna para estudantes e famílias">
+              <img src="./assets/img/diferencial-familias-estudantes.png?v=20260617-1" alt="Experiência moderna para estudantes e famílias">
             </div>
             <h5>Experiência moderna</h5>
             <p>
@@ -813,7 +2684,7 @@
           <h3>Preencha seus dados</h3>
 
           <form class="demo-form" method="post" action="#">
-            
+            <input type="hidden" name="csrfmiddlewaretoken" value="m7jUElVgSw8P8EosCvtdeER0HrPBdbYIPQbuc224shXLWM0oHHWzB0gxbvZMWuao">
             <label>
               <span>Nome</span>
               <input type="text" name="nome" placeholder="Seu nome" required>
@@ -835,7 +2706,7 @@
               </button>
 
               <a class="btn360 btn360-whats"
-                href="https://wa.me/5531999813140?text=Olá!%20Quero%20agendar%20uma%20demonstração%20do%20Conect360."
+                href="https://wa.me/5531990604590?text=Olá!%20Quero%20agendar%20uma%20demonstração%20do%20Conect360."
                 target="_blank" rel="noopener">
                 Falar pelo WhatsApp
               </a>
@@ -845,7 +2716,7 @@
 
         <div class="demo-card demo-info">
           <div class="demo-media">
-            <img src="assets/img/demo-conect360.png?v=20260617-1" alt="Demonstração Conect360" loading="lazy">
+            <img src="./assets/img/demo-conect360.png?v=20260617-1" alt="Demonstração Conect360" loading="lazy">
           </div>
 
           <h3>O que você verá na demonstração?</h3>
@@ -896,7 +2767,7 @@
         <div class="home360-actions cta-final-actions">
           <a class="btn-outline" href="#comunicacao">Agendar demonstração</a>
           <a class="btn-outline cta-whats"
-             href="https://wa.me/5531999813140?text=Olá!%20Quero%20conhecer%20o%20Conect360."
+             href="https://wa.me/5531990604590?text=Olá!%20Quero%20conhecer%20o%20Conect360."
              target="_blank" rel="noopener">
             Falar pelo WhatsApp
           </a>
@@ -921,9 +2792,8 @@
         <div>
           <h4>Entre em contato</h4>
           <ul>
-            <li>📍 Formiga/MG</li>
-            <li>☎ (31) 99981-3140</li>
-            <li>✉ suporte@conect360.com.br</li>
+            <li>☎ (31) 99060-4590</li>
+            <li>✉ conect360.app@gmail.com</li>
           </ul>
         </div>
 
@@ -940,10 +2810,12 @@
           <h4>Acesso</h4>
 
           <div class="footer-actions">
-            <a class="btn" href="acesso.html">Entrar</a>
+            
+              <a class="btn" href="/login/">Entrar</a>
+            
 
             <a class="btn footer-whats"
-               href="https://wa.me/5531999813140?text=Olá!%20Quero%20conhecer%20o%20Conect360."
+               href="https://wa.me/5531990604590?text=Olá!%20Quero%20conhecer%20o%20Conect360."
                target="_blank" rel="noopener">
               WhatsApp
             </a>
@@ -961,6 +2833,139 @@
 
 </div>
 
-<script src="assets/js/script.js"></script>
+<script>
+
+  function mostrarInstrucaoInstalacao(texto){
+    let box = document.getElementById("installConect360Box");
+
+    if(!box){
+      box = document.createElement("div");
+      box.id = "installConect360Box";
+      box.style.position = "fixed";
+      box.style.top = "90px";
+      box.style.right = "20px";
+      box.style.zIndex = "9999";
+      box.style.maxWidth = "360px";
+      box.style.background = "rgba(15,23,42,.96)";
+      box.style.color = "#fff";
+      box.style.border = "1px solid rgba(255,255,255,.18)";
+      box.style.borderRadius = "16px";
+      box.style.padding = "16px";
+      box.style.boxShadow = "0 18px 50px rgba(0,0,0,.45)";
+      box.style.fontWeight = "800";
+      box.style.lineHeight = "1.5";
+
+      document.body.appendChild(box);
+    }
+
+    box.innerHTML = `
+      <div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;">
+        <div>
+          <div style="font-size:15px;margin-bottom:6px;">📲 Instalar Conect360</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.78);">${texto}</div>
+        </div>
+        <button type="button" onclick="document.getElementById('installConect360Box').remove()"
+          style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);color:#fff;border-radius:999px;width:28px;height:28px;cursor:pointer;">
+          ×
+        </button>
+      </div>
+    `;
+  }
+
+  let conect360InstallPrompt = null;
+
+  window.addEventListener("beforeinstallprompt", function(event){
+    event.preventDefault();
+    conect360InstallPrompt = event;
+
+    const btn = document.getElementById("btnInstallConect360");
+    if(btn){
+      btn.style.display = "inline-flex";
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", function(){
+    const btn = document.getElementById("btnInstallConect360");
+
+    if(!btn) return;
+
+    btn.addEventListener("click", async function(){
+      if(conect360InstallPrompt){
+        conect360InstallPrompt.prompt();
+        await conect360InstallPrompt.userChoice;
+        conect360InstallPrompt = null;
+        btn.style.display = "none";
+        return;
+      }
+
+      const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+      if(isIOS && isSafari){
+        mostrarInstrucaoInstalacao("No iPhone, toque no botão Compartilhar do Safari e depois em 'Adicionar à Tela de Início'.");
+      }else{
+        mostrarInstrucaoInstalacao("No computador ou Android, abra o menu do navegador e escolha 'Instalar app' ou 'Adicionar à tela inicial'.");
+      }
+    });
+  });
+
+  (function(){
+    const slides = Array.from(document.querySelectorAll(".home360-slide"));
+    const prev = document.getElementById("home360Prev");
+    const next = document.getElementById("home360Next");
+    const dotsWrap = document.getElementById("home360Dots");
+    const top = document.getElementById("home360Top");
+
+    if(!slides.length) return;
+
+    let idx = slides.findIndex(s => s.classList.contains("active"));
+    if(idx < 0) idx = 0;
+
+    function renderDots(){
+      if(!dotsWrap) return;
+      dotsWrap.innerHTML = "";
+      slides.forEach((_, k) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "home360-dot" + (k === idx ? " active" : "");
+        b.setAttribute("aria-label", "Ir para slide " + (k+1));
+        b.addEventListener("click", () => go(k));
+        dotsWrap.appendChild(b);
+      });
+    }
+
+    function go(i){
+      slides[idx].classList.remove("active");
+      idx = (i + slides.length) % slides.length;
+      slides[idx].classList.add("active");
+      renderDots();
+    }
+
+    renderDots();
+
+    if(prev) prev.addEventListener("click", () => go(idx - 1));
+    if(next) next.addEventListener("click", () => go(idx + 1));
+
+    let timer = setInterval(() => go(idx + 1), 6500);
+    const hero = document.querySelector(".home360-hero");
+    if(hero){
+      hero.addEventListener("mouseenter", () => clearInterval(timer));
+      hero.addEventListener("mouseleave", () => { timer = setInterval(() => go(idx + 1), 6500); });
+    }
+
+    if(top){
+      top.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    }
+  })();
+</script>
+
+  </main>
+
+  
+
+</div>
 </body>
 </html>
