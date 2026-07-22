@@ -622,9 +622,13 @@
   }
   .home360-about .cols{
     display:grid;
-    grid-template-columns: 1.1fr .9fr;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
     gap: 18px;
     align-items:stretch;
+  }
+
+  .home360-about .cols > div{
+    min-width: 0;
   }
   .home360-about h2{ text-align:left; margin:0 0 10px; font-size: 34px; }
   .home360-about .text{ color: rgba(255,255,255,.72); line-height:1.7; margin: 0 0 14px; }
